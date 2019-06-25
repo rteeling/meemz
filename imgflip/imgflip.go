@@ -9,8 +9,8 @@ import (
 )
 
 type ImgflipResponseData struct {
-	url      string `json:"url"`
-	page_url string `json:"page_url"`
+	url     string `json:"url"`
+	pageUrl string `json:"page_url"`
 }
 
 type ImgflipResponse struct {
@@ -36,7 +36,7 @@ func CreateMeme(templateId string, text0 string, text1 string, username string, 
 	response, err := http.Get(imgflipUrl)
 
 	if err != nil {
-		fmt.Println("Shit! API call Blew UP!")
+		fmt.Println("API call Blew UP!")
 		panic(err)
 	}
 
@@ -44,7 +44,7 @@ func CreateMeme(templateId string, text0 string, text1 string, username string, 
 	responseData, err := ioutil.ReadAll(response.Body)
 
 	if err != nil {
-		fmt.Println("Shit! Reading the response borkd!")
+		fmt.Println("Reading the response borkd!")
 		panic(err)
 	}
 
@@ -52,6 +52,8 @@ func CreateMeme(templateId string, text0 string, text1 string, username string, 
 	var responseObject ImgflipResponse
 	json.Unmarshal(responseData, &responseObject)
 
-	fmt.Println(responseObject.data.url)
-	// response, err := http.Post()
+	fmt.Println(responseObject.success)
+	fmt.Println(responseObject.data.pageUrl)
+	fmt.Println(responseObject.errorMessage)
+
 }
