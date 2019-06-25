@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "cf340c85-905f-4ebe-8c10-18287c83e6d5",
+		"name": "imgflip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Memes",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.imgflip.com/get_memes",
+					"protocol": "https",
+					"host": [
+						"api",
+						"imgflip",
+						"com"
+					],
+					"path": [
+						"get_memes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Caption image",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Waffle91",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "misterbazooka",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.imgflip.com/caption_image?template_id=102156234&text0=top text&text1=bottom text&username=misterbazooka&password=TestPassword",
+					"protocol": "https",
+					"host": [
+						"api",
+						"imgflip",
+						"com"
+					],
+					"path": [
+						"caption_image"
+					],
+					"query": [
+						{
+							"key": "template_id",
+							"value": "102156234"
+						},
+						{
+							"key": "text0",
+							"value": "top text"
+						},
+						{
+							"key": "text1",
+							"value": "bottom text"
+						},
+						{
+							"key": "username",
+							"value": "misterbazooka"
+						},
+						{
+							"key": "password",
+							"value": "TestPassword"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
