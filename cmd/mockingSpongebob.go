@@ -17,7 +17,7 @@ limitations under the License.
 */
 
 import (
-	"github.com/rteeling/meemz/auth"
+	creds "github.com/rteeling/meemz/creds"
 	"github.com/rteeling/meemz/imgflip"
 
 	"github.com/spf13/cobra"
@@ -38,7 +38,7 @@ meemz mockingSpongebob "i CaN" "MaKe LoTs Of MeMes" mymeme.jpg
 	`,
 	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		username, password := auth.UserPassPrompt
+		username, password := creds.UserPassPrompt()
 
 		memeURL := imgflip.CreateMeme("102156234", args[0], args[1], username, password)
 		imgflip.DownloadFile(outputPath, memeURL)
