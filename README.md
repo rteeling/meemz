@@ -4,3 +4,5 @@
 ```
 > ./meemz mockingSpongebob "iT wOrKs" "oN My MaChInE..." -o foo.jpg
 ```
+
+You will be prompted for your imgflip username and password

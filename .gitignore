@@ -22,6 +22,7 @@
 
 # binary
 meemz
+*.jpg
 
 # End of https://www.gitignore.io/api/go
 .vscode

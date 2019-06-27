@@ -1,3 +1,5 @@
+package cmd
+
 /*
 Copyright © 2019 NAME HERE <EMAIL ADDRESS>
 
@@ -13,17 +15,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package cmd
 
 import (
-	"bufio"
-	"fmt"
-	"os"
-	"strings"
-	"syscall"
-
+	"github.com/rteeling/meemz/auth"
 	"github.com/rteeling/meemz/imgflip"
-	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/spf13/cobra"
 )
@@ -43,21 +38,9 @@ meemz mockingSpongebob "i CaN" "MaKe LoTs Of MeMes" mymeme.jpg
 	`,
 	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		// Prompt for username and password
-		reader := bufio.NewReader(os.Stdin)
+		username, password := auth.UserPassPrompt
 
-		fmt.Print("Enter Username: ")
-		username, _ := reader.ReadString('\n')
-
-		fmt.Print("Enter Password: ")
-		bytePassword, err := terminal.ReadPassword(int(syscall.Stdin))
-		if err != nil {
-			panic(err)
-		}
-		password := string(bytePassword)
-		fmt.Print("\n\n\n")
-
-		memeURL := imgflip.CreateMeme("102156234", args[0], args[1], strings.TrimSpace(username), strings.TrimSpace(password))
+		memeURL := imgflip.CreateMeme("102156234", args[0], args[1], username, password)
 		imgflip.DownloadFile(outputPath, memeURL)
 	},
 }
