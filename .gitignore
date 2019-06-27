@@ -24,3 +24,4 @@
 meemz
 
 # End of https://www.gitignore.io/api/go
+.vscode
